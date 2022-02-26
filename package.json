@@ -1,0 +1,24 @@
+{
+  "name": "full-copy",
+  "version": "1.0.1",
+  "description": "This package allows you to create a copy of a given value. It is especially focused on making deep copies to objects.",
+  "main": "dist-node/index.js",
+  "browser": "dist-browser/index.js",
+  "homepage": "https://github.com/ChristBM/full-copy",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChristBM/full-copy"
+  },
+  "scripts": {
+    "build-browser": "tsc src/index.ts --outDir dist-browser --module ES6",
+    "build-node": "tsc src/index.ts --outDir dist-node",
+    "build": "npm run build-browser & npm run build-node"
+  },
+  "keywords": ["deep","copy","object","javascript","types","copy nested objects", "full"],
+  "author": "ChristBM <christian.boffill@gmail.com>",
+  "contributors": [],
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  }
+}
