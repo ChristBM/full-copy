@@ -1,7 +1,7 @@
 /**
-* Determines the type of a value
+* Determines the type and the prototype of a value
 * @param value Any
-* @returns Result array ['type'. 'prototype']
+* @returns Result Array ['type'. 'prototype']
 */
 export const TypeCheck = (value: any): string[] => {
 	let type = Object.prototype.toString.call(value).match(/\s([\w]+)\]$/)[1].toLowerCase()
@@ -14,7 +14,7 @@ export const TypeCheck = (value: any): string[] => {
 /**
 * Copies an object
 * @param obj Object
-* @returns Copy Object
+* @returns Object
 */
 export const CopyObj = (obj: object): object => {
 	let copy = {}
@@ -30,10 +30,10 @@ export const CopyObj = (obj: object): object => {
 }
 /**
 * Copies a value
-* @param value Object
-* @returns Copy
+* @param value Any
+* @returns Copy Any
 */
-export function FullCopy(value: any): any {
+export const FullCopy = (value: any): any => {
 	if (TypeCheck(value)[0] === 'array') return JSON.parse(JSON.stringify(value))
 	if (TypeCheck(value)[0] !== 'array' && TypeCheck(value)[0] !== 'object') return value
 	else return CopyObj(value)
