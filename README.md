@@ -13,7 +13,7 @@ It contains three functions:
 ## Install :wrench:
 
 ```npm
-npm i -D full-copy
+npm i full-copy
 ```
 
 # Usage :pencil:
@@ -21,6 +21,9 @@ npm i -D full-copy
 Given a complex object as follows:
 
 ```javascript
+
+import { FullCopy, TypeCheck, CopyObj } from 'full-copy'
+
 const Person = {
 	_name: 'John',
 	lastName: 'Doe',
@@ -49,16 +52,20 @@ const Person = {
 Let's make a copy of the previous object and analyze the results.
 
 ```javascript
-let newPerson = DeepCopy(Person)
+let newPerson = FullCopy(Person) // if you are sure that Person is an object you can use CopyObj(Person) instead of FullCopy
 
 newPerson.name = 'Robert'
 newPerson.things.push('xbox')
 newPerson.friends.book.title = 'Type Wow Script'
 
-console.log(Person)
+console.log( Person )
 
-console.log(newPerson)
-console.log(newPerson.greeting(), newPerson.name)
+console.log( newPerson )
+
+console.log( newPerson.greeting(), newPerson.name ) // return: Hello, how are you? Robert
+
+console.log( TypeCheck( Person ) ) // return: ['object', 'Object']
+console.log( TypeCheck( [1,2,3] ) ) // return: ['array', 'Array']
 
 ```
 
@@ -88,7 +95,6 @@ console.log(newPerson.greeting(), newPerson.name)
   greeting: [Function: greeting],
   name: [Getter/Setter]
 }
-Hello, how are you? Robert
 
 ```
 As you can see we modified newPerson and the original object was not altered. In the same way you can check that if the original is modified the copy is not modified.
