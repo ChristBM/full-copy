@@ -14,11 +14,20 @@
     "build-node": "tsc src/index.ts --outDir dist-node",
     "build": "npm run build-browser & npm run build-node"
   },
-  "keywords": ["deep","copy","object","javascript","types","copy nested objects", "full"],
+  "keywords": [
+    "deep",
+    "copy",
+    "object",
+    "javascript",
+    "types",
+    "copy nested objects",
+    "full"
+  ],
   "author": "ChristBM <christian.boffill@gmail.com>",
   "contributors": [],
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^17.0.21",
     "typescript": "^4.5.5"
   }
 }
