@@ -1,18 +1,32 @@
 {
   "name": "full-copy",
-  "version": "1.0.3",
-  "description": "This package allows you to create a copy of a given value. It is especially focused on making deep copies to objects.",
-  "main": "node/index.js",
-  "browser": "browser/index.js",
+  "version": "2.0.0",
+  "description": "This package allows you to create a copy of a given value. It is especially focused on making deep copies to objects in JavaScript.",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js",
+    "types": "./dist/types/index.d.ts"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "homepage": "https://github.com/ChristBM/full-copy",
   "repository": {
     "type": "git",
     "url": "https://github.com/ChristBM/full-copy"
   },
   "scripts": {
-    "build-browser": "tsc src/index.ts --outDir browser --module ES6",
-    "build-node": "tsc src/index.ts --outDir node",
-    "build": "npm run build-browser & npm run build-node"
+    "clean": "rm -rf dist",
+    "build:esm": "tsc --project tsconfig.json --module ESNext --outDir dist/esm",
+    "build:cjs": "tsc --project tsconfig.json --module commonjs --outDir dist/cjs",
+    "build:types": "tsc --project tsconfig.json --emitDeclarationOnly --outDir dist/types",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:types",
+    "benchmark": "ts-node --project tsconfig.json --compiler-options '{\"module\":\"commonjs\"}' test/benchmark.ts",
+    "test:manual": "ts-node --project tsconfig.json --compiler-options '{\"module\":\"commonjs\"}' test/test.ts"
   },
   "keywords": [
     "deep",
@@ -24,10 +38,12 @@
     "full"
   ],
   "author": "ChristBM <christian.boffill@gmail.com> (https://github.com/ChristBM)",
-  "contributors": ["JoseGaldamez (https://github.com/JoseGaldamez)"],
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^17.0.18",
-    "typescript": "^4.5.5"
+    "@types/benchmark": "^2.1.5",
+    "@types/node": "^22.15.30",
+    "benchmark": "^2.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }

@@ -8,8 +8,6 @@ It contains three functions:
 
 * ***TypeCheck(value)***: It receives any value and returns a two-position array. In position zero it has the type and in position one it has the name of the prototype of which the object is an instance. Example: ``` ['number', 'Number'] ```
 
-* ***CopyObj(object)***: It receives an object and returns its copy.
-
 ## Install :wrench:
 
 ```npm
@@ -22,7 +20,7 @@ Given a complex object as follows:
 
 ```javascript
 
-import { FullCopy, TypeCheck, CopyObj } from 'full-copy'
+import { FullCopy, TypeCheck } from 'full-copy'
 
 const Person = {
 	_name: 'John',
@@ -52,7 +50,7 @@ const Person = {
 Let's make a copy of the previous object and analyze the results.
 
 ```javascript
-let newPerson = FullCopy(Person) // if you are sure that Person is an object you can use CopyObj(Person) instead of FullCopy
+let newPerson = FullCopy(Person)
 
 newPerson.name = 'Robert'
 newPerson.things.push('xbox')
