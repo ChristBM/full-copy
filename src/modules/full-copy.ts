@@ -1,4 +1,4 @@
-import { TypeCheck } from './type-check';
+import { TypeCheck } from './type-check.js';
 
 /**
  * FullCopy: Deep clone of any value (Date, RegExp, Map, Array...), preserving structure and reference safety.
