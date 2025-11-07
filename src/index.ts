@@ -1,2 +1,2 @@
-export { TypeCheck } from './modules/type-check';
-export { FullCopy } from './modules/full-copy';
+export { TypeCheck } from './modules/type-check.js';
+export { FullCopy } from './modules/full-copy.js';
